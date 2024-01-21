@@ -37,6 +37,7 @@ class iFrame(Component):
         elem_id: str | None = None,
         elem_classes: list[str] | str | None = None,
         render: bool = True,
+        height: str | None = None,
     ):
         """
         Parameters:
@@ -48,6 +49,7 @@ class iFrame(Component):
             elem_id: An optional string that is assigned as the id of this component in the iFrame DOM. Can be used for targeting CSS styles.
             elem_classes: An optional list of strings that are assigned as the classes of this component in the iFrame DOM. Can be used for targeting CSS styles.
             render: If False, component will not render be rendered in the Blocks context. Should be used if the intention is to assign event listeners now but render the component later.
+            height: The height of the iFrame in pixels. If None, the height will be automatically set to 100%
         """
         super().__init__(
             label=label,
@@ -59,6 +61,8 @@ class iFrame(Component):
             render=render,
             value=value,
         )
+
+        self.height = height
 
     def example_inputs(self) -> Any:
         return "<p>Hello</p>"

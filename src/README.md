@@ -34,5 +34,3 @@ Also this component is still a work in progress and not fully tested. Use at you
 
 - Height does not grow according to the inner component.
 - ...
-
-
