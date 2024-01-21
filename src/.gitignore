@@ -6,3 +6,6 @@ __pycache__/
 __tmp/*
 *.pyi
 node_modules
+./dist/
+./dist
+/dist/
