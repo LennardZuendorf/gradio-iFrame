@@ -10,7 +10,8 @@
 	export let elem_classes: string[] = [];
 	export let visible = true;
 	export let value = "";
-	export let height: string = "100%";
+	export let height: string;
+	export let width: string = "100%";
 	export let loading_status: LoadingStatus;
 	export let gradio: Gradio<{
 		change: never;
@@ -33,6 +34,7 @@
 			{elem_classes}
 			{visible}
 			{height}
+			{width}
 			on:change={() => gradio.dispatch("change")}
 		/>
 	</div>

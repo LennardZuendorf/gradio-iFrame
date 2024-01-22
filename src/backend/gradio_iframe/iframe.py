@@ -37,6 +37,7 @@ class iFrame(Component):
         elem_classes: list[str] | str | None = None,
         render: bool = True,
         height: str | None = None,
+        width: str | None = None,
     ):
         """
         Parameters:
@@ -62,9 +63,10 @@ class iFrame(Component):
         )
 
         self.height = height
+        self.width = width
 
     def example_inputs(self) -> Any:
-        return "<p>Hello</p>"
+        return """<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=QfHLpHZsI98oZT1G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>"""
 
     def preprocess(self, payload: str | None) -> str | None:
         return payload
