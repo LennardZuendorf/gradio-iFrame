@@ -5,7 +5,7 @@
 	export let visible = true;
 	export let min_height = false;
 
-	export let height;
+	export let height = "100%";
 	export let width = "100%";
 
 	const dispatch = createEventDispatcher<{ change: undefined }>();
@@ -15,7 +15,7 @@
     const onLoad = () => {
 		try {
 			const iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
-			if (height === undefined) {
+			if (height === "100%") {
 				const height = iframeDocument.documentElement.scrollHeight;
 				iframeElement.style.height = `${height}px`;
 			}

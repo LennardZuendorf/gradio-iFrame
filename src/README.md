@@ -8,7 +8,7 @@ The usage is similar to the HTML component. You can pass valid html and it will 
 Also, JavaScript should run normal. You can even pass an iframe inside an iframe (see below!), i.e. a youtube or spotify embed.
 
 The size will adjust to the size of the iframe (onload), **this is gonna be a bit delayed**. The width is default at 100%. 
-You can also set the height and width manually.
+You can also set the height and width manually. 
 
 ### Example
 

@@ -87,13 +87,13 @@ function ut(n) {
   };
 }
 function dt(n, t, e) {
-  let { elem_classes: l = [] } = t, { value: i } = t, { visible: s = !0 } = t, { min_height: o = !1 } = t, { height: a } = t, { width: r = "100%" } = t;
+  let { elem_classes: l = [] } = t, { value: i } = t, { visible: s = !0 } = t, { min_height: o = !1 } = t, { height: a = "100%" } = t, { width: r = "100%" } = t;
   const f = ct();
   let _;
   const m = () => {
     try {
       const c = _.contentDocument || _.contentWindow.document;
-      if (a === void 0) {
+      if (a === "100%") {
         const v = c.documentElement.scrollHeight;
         e(6, _.style.height = `${v}px`, _);
       }
