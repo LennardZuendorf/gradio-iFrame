@@ -1,4 +1,3 @@
-
 import gradio as gr
 from gradio_iframe import iFrame
 
