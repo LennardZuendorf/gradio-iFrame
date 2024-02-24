@@ -16,8 +16,9 @@
 		try {
 			const iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
 			if (height === "100%") {
-				const height = iframeDocument.documentElement.scrollHeight;
-				iframeElement.style.height = `${height}px`;
+				iframeElement.style.height = `${iframeDocument.documentElement.scrollHeight}px`;
+			}else {
+				iframeElement.style.height = height;
 			}
 		} catch (e) {
 			console.error("Error accessing iframe content:", e);
@@ -38,6 +39,7 @@
         title="iframe component"
         width={width}
         srcdoc={value}
+		height={height}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
         on:load={onLoad}

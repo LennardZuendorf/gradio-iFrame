@@ -10,7 +10,7 @@
 	export let elem_classes: string[] = [];
 	export let visible = true;
 	export let value = "";
-	export let height: string;
+	export let height: string = "100%";
 	export let width: string = "100%";
 	export let loading_status: LoadingStatus;
 	export let gradio: Gradio<{
@@ -20,7 +20,7 @@
 	$: label, gradio.dispatch("change");
 </script>
 
-<Block {visible} {elem_id} {elem_classes} container={false}>
+<Block {visible} {elem_id} {elem_classes} container={false} height={height}>
 	<StatusTracker
 		autoscroll={gradio.autoscroll}
 		i18n={gradio.i18n}

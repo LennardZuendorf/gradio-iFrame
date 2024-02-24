@@ -14,7 +14,7 @@ function y(n) {
   let e, l;
   return {
     c() {
-      e = o("div"), l = o("iframe"), s(l, "title", "iframe component"), s(l, "width", "100%"), s(l, "height", "100%"), s(
+      e = o("div"), l = o("iframe"), s(l, "title", "iframe component"), s(l, "width", "100%"), s(l, "height", "1000px"), s(
         l,
         "srcdoc",
         /*value*/
