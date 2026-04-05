@@ -1,6 +1,6 @@
 {
   "name": "gradio_iframe",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Gradio UI packages",
   "type": "module",
   "author": "Lennard Zündorf",
@@ -8,9 +8,9 @@
   "private": false,
   "main_changeset": true,
   "dependencies": {
-    "@gradio/atoms": "^0.9.0",
-    "@gradio/statustracker": "^0.8.0",
-    "@gradio/utils": "^0.7.0"
+    "@gradio/atoms": "^0.18.0",
+    "@gradio/statustracker": "^0.11.0",
+    "@gradio/utils": "^0.10.2"
   },
   "exports": {
     ".": "./Index.svelte",
@@ -18,6 +18,6 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@gradio/preview": "^0.15.1"
+    "@gradio/preview": "^0.16.0"
   }
 }

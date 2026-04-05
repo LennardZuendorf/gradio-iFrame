@@ -17,7 +17,7 @@
 		change: never;
 	}>;
 
-	$: label, gradio.dispatch("change");
+	$: value, gradio.dispatch("change");
 </script>
 
 <Block {visible} {elem_id} {elem_classes} container={false} height={height}>
