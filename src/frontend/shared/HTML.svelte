@@ -14,7 +14,7 @@
 
     const onLoad = () => {
 		try {
-			const iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
+			const iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow?.document;
 			if (height === "100%") {
 				iframeElement.style.height = `${iframeDocument.documentElement.scrollHeight}px`;
 			}else {
@@ -32,7 +32,6 @@
 	class="prose {elem_classes.join(' ')}"
 	class:min={min_height}
 	class:hide={!visible}
-	class:height={height}
 >
     <iframe
         bind:this={iframeElement}

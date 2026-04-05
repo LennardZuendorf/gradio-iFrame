@@ -35,7 +35,6 @@
 			{visible}
 			{height}
 			{width}
-			on:change={() => gradio.dispatch("change")}
 		/>
 	</div>
 </Block>
