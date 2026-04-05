@@ -42,6 +42,7 @@ class iFrame(Component):
         preserved_by_key: list[str] | str | None = "value",
         height: str | None = None,
         width: str | None = None,
+        sandbox: str | None = None,
     ):
         """
         Parameters:
@@ -58,6 +59,7 @@ class iFrame(Component):
             preserved_by_key: A list of parameters from this component's constructor. Inside a gr.render() function, if a component is re-rendered with the same key, these (and only these) parameters will be preserved in the UI instead of re-rendered based on the values provided during constructor.
             height: The height of the iFrame in valid CSS (e.g. "100px" or "50%"). If None, the height will be automatically set based on content.
             width: The width of the iFrame in valid CSS (e.g. "100%" or "500px"). Defaults to 100%.
+            sandbox: HTML sandbox attribute string to restrict iframe capabilities (e.g. "allow-scripts allow-forms"). None (default) applies no sandboxing. Note: omitting "allow-scripts" disables JavaScript and auto-height measurement inside the iframe.
         """
         super().__init__(
             label=label,
@@ -75,6 +77,7 @@ class iFrame(Component):
 
         self.height = height
         self.width = width
+        self.sandbox = sandbox
 
     def example_inputs(self) -> Any:
         return """<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=QfHLpHZsI98oZT1G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>"""
