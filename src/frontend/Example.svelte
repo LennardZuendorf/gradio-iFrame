@@ -10,7 +10,7 @@
 	class:selected
 	class="prose"
 >
-	<iframe title="iframe component" width="100%" height="1000px" srcdoc={value} allow=""></iframe>
+	<iframe title="iframe component" width="100%" height="1000px" srcdoc={value} sandbox="allow-scripts" allow=""></iframe>
 </div>
 
 <style>

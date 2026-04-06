@@ -12,12 +12,13 @@
 	export let value = "";
 	export let height: string = "100%";
 	export let width: string = "100%";
+	export let sandbox: string | null = null;
 	export let loading_status: LoadingStatus;
 	export let gradio: Gradio<{
 		change: never;
 	}>;
 
-	$: label, gradio.dispatch("change");
+	$: value, gradio.dispatch("change");
 </script>
 
 <Block {visible} {elem_id} {elem_classes} container={false} height={height}>
@@ -35,7 +36,7 @@
 			{visible}
 			{height}
 			{width}
-			on:change={() => gradio.dispatch("change")}
+			{sandbox}
 		/>
 	</div>
 </Block>
