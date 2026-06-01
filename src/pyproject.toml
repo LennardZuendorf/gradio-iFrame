@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-  "hatchling",
+  "hatchling>=1.28.0",
   "hatch-requirements-txt",
   "hatch-fancy-pypi-readme>=22.5.0",
 ]
@@ -8,25 +8,25 @@ build-backend = "hatchling.build"
 
 [project]
 name = "gradio_iframe"
-version = "0.0.10"
+version = "0.0.12"
 description = "Experimental empowered iFrame component based on existing HTML gradio component."
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 authors = [{ name = "Lennard Zündorf", email = "lennard@zuendorf.me" }]
 keywords = ["gradio-custom-component", "gradio-template-HTML", "HTML", "iFrame"]
 # Add dependencies here
-dependencies = ["gradio>=4.0,<5.0"]
+dependencies = ["gradio>=5.0,<6.0"]
 classifiers = [
   'Development Status :: 3 - Alpha',
-  'License :: OSI Approved :: Apache Software License',
+  'License :: OSI Approved :: MIT License',
   'Operating System :: OS Independent',
   'Programming Language :: Python :: 3',
   'Programming Language :: Python :: 3 :: Only',
-  'Programming Language :: Python :: 3.8',
-  'Programming Language :: Python :: 3.9',
   'Programming Language :: Python :: 3.10',
   'Programming Language :: Python :: 3.11',
+  'Programming Language :: Python :: 3.12',
+  'Programming Language :: Python :: 3.13',
   'Topic :: Scientific/Engineering',
   'Topic :: Scientific/Engineering :: Artificial Intelligence',
   'Topic :: Scientific/Engineering :: Visualization',
@@ -36,7 +36,7 @@ classifiers = [
 dev = ["build", "twine"]
 
 [tool.hatch.build]
-artifacts = ["/backend/gradio_iframe/templates", "*.pyi", "backend/gradio_iframe/templates", "home/lennard/.virtualenvs/thesis/lib/python3.11/site-packages/gradio_iframe/templates", "backend/gradio_iframe/templates", "backend/gradio_iframe/templates", "backend/gradio_iframe/templates", "backend/gradio_iframe/templates", "backend/gradio_iframe/templates", "backend/gradio_iframe/templates", "backend/gradio_iframe/templates", "backend/gradio_iframe/templates", "backend/gradio_iframe/templates", "backend/gradio_iframe/templates", "backend/gradio_iframe/templates"]
+artifacts = ["/backend/gradio_iframe/templates", "*.pyi"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["/backend/gradio_iframe"]
