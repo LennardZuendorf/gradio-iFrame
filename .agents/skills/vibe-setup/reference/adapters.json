@@ -1,0 +1,20 @@
+{
+  "$comment": "Adapter catalogue for AGENTS.md provisioning (agent-instructions feature). AGENTS.md is the always-present real file; adapters are opt-in relative symlinks the user selects at setup. Extend this list to add runtimes without editing skill prose.",
+  "canonical": "AGENTS.md",
+  "adapters": [
+    {
+      "file": "CLAUDE.md",
+      "target": "AGENTS.md",
+      "runtime": "claude-code",
+      "default": false,
+      "notes": "Claude Code reads CLAUDE.md; symlink keeps one source of truth."
+    },
+    {
+      "file": "WARP.md",
+      "target": "AGENTS.md",
+      "runtime": "warp",
+      "default": false,
+      "notes": "Warp reads AGENTS.md natively since 2025; only symlink WARP.md for teams on the legacy filename."
+    }
+  ]
+}

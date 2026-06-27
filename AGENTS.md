@@ -6,17 +6,17 @@ Custom Gradio component that renders HTML content inside an iframe. Published to
 
 | Layer | Tech | Location |
 |---|---|---|
-| Python backend | Gradio Component (Python 3.10+) | `src/backend/gradio_iframe/` |
-| Frontend | Svelte + TypeScript | `src/frontend/` |
-| Demo app | Gradio Blocks | `app.py`, `src/demo/app.py` |
-| Build | Hatchling (Python), npm (JS) | `src/pyproject.toml`, `src/frontend/package.json` |
+| Python backend | Gradio Component (Python 3.10+) | `backend/gradio_iframe/` |
+| Frontend | Svelte + TypeScript | `frontend/` |
+| Demo app | Gradio Blocks | `app.py`, `demo/app.py` |
+| Build | Hatchling (Python), npm (JS) | `pyproject.toml`, `frontend/package.json` |
 
 ## Key Files
 
-- `src/backend/gradio_iframe/iframe.py` — Component class (`iFrame`), extends `gradio.components.base.Component`
-- `src/frontend/shared/HTML.svelte` — Core iframe rendering + auto-height logic
-- `src/frontend/Index.svelte` — Gradio Block wrapper
-- `src/frontend/Example.svelte` — Example display in Gradio Interfaces
+- `backend/gradio_iframe/iframe.py` — Component class (`iFrame`), extends `gradio.components.base.Component`
+- `frontend/shared/HTML.svelte` — Core iframe rendering + auto-height logic
+- `frontend/Index.svelte` — Gradio Block wrapper
+- `frontend/Example.svelte` — Example display in Gradio Interfaces
 - `app.py` — Minimal demo (blank + populated iframe)
 
 ## Development Workflow
@@ -29,25 +29,25 @@ Custom Gradio component that renders HTML content inside an iframe. Published to
 ### Running the Demo
 ```bash
 # Install package locally (from repo root)
-pip install -e src/
+pip install -e .
 
 # Launch demo
 python app.py
 # or
-python src/demo/app.py
+python demo/app.py
 ```
 
 ### Frontend Dev
 ```bash
-cd src/frontend
+cd frontend
 npm install
 # Gradio custom component live reload via:
-cd src && gradio cc dev
+gradio cc dev
 ```
 
 ### Building
 ```bash
-cd src && gradio cc build
+gradio cc build
 ```
 
 ## Agent Workflow Guidelines
@@ -65,7 +65,7 @@ When making changes that span both frontend and backend:
 4. Validate with the demo app
 
 ### Never Do
-- Edit compiled/generated files in `src/backend/gradio_iframe/templates/` directly — these are built from `src/frontend/`
+- Edit compiled/generated files in `backend/gradio_iframe/templates/` directly — these are built from `frontend/`
 - Modify `iframe.pyi` manually — it's auto-generated
 - Push directly to `main`
 
@@ -75,7 +75,7 @@ When making changes that span both frontend and backend:
 
 **Svelte**: Props use `export let`, keep reactivity statements (`$:`) minimal. Height/width are CSS strings, default `"100%"`.
 
-**Versioning**: Python package version in `src/pyproject.toml`, JS version in `src/frontend/package.json` — bump both together on releases.
+**Versioning**: Python package version in `pyproject.toml`, JS version in `frontend/package.json` — bump both together on releases.
 
 ## Known Issues / Open Work
 - Auto-height only works for same-origin iframes (cross-origin throws and falls back silently)

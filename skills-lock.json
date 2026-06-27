@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": {
+    "spec": {
+      "source": "LennardZuendorf/vibe",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/spec/SKILL.md",
+      "computedHash": "1533a51dd24010826a9a5eb3220ef9f02e905a4f9e8ae6f9881d24aea8d891f4"
+    },
+    "vibe-amend": {
+      "source": "LennardZuendorf/vibe",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/vibe-amend/SKILL.md",
+      "computedHash": "00c1e60e8ef044398b228a28e1fed841028355f23d1c28444127bc545304aca3"
+    },
+    "vibe-compound": {
+      "source": "LennardZuendorf/vibe",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/vibe-compound/SKILL.md",
+      "computedHash": "2a0675e6133bcdcc5ee2be9fdb727550e78b69961778f971cd5bd3e8593388eb"
+    },
+    "vibe-feature": {
+      "source": "LennardZuendorf/vibe",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/vibe-feature/SKILL.md",
+      "computedHash": "b89861dea3265aced1a7a9f2ac7c2c339c22bbeae0ff969d9006837f73fd17ef"
+    },
+    "vibe-quick": {
+      "source": "LennardZuendorf/vibe",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/vibe-quick/SKILL.md",
+      "computedHash": "aed780346a202569ddc0eac0e6ac357c5055bca5c3c8eb2ba34157ba40128c45"
+    },
+    "vibe-setup": {
+      "source": "LennardZuendorf/vibe",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/vibe-setup/SKILL.md",
+      "computedHash": "af426efd00a3f7d09a8b4617fc1700075105d416842b00610143998a214db4d8"
+    },
+    "vibe-strategy": {
+      "source": "LennardZuendorf/vibe",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/vibe-strategy/SKILL.md",
+      "computedHash": "67d500bd0ee91efa614b067fc879d87d32d5eb506ee70231f21131129a210f87"
+    },
+    "vibe-verify": {
+      "source": "LennardZuendorf/vibe",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/vibe-verify/SKILL.md",
+      "computedHash": "593339f1485fcadd39c14346a4ef6b218f81f576a6e54c4a625a830c7dfc676f"
+    }
+  }
+}
