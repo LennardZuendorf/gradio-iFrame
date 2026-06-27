@@ -1,89 +1,106 @@
 const {
-  SvelteComponent: r,
-  append: d,
-  attr: s,
-  detach: u,
-  element: o,
+  SvelteComponent: _,
+  append_hydration: m,
+  attr: i,
+  children: d,
+  claim_element: f,
+  detach: c,
+  element: u,
   init: g,
-  insert: m,
-  noop: _,
-  safe_not_equal: v,
-  toggle_class: c
+  insert_hydration: v,
+  noop: h,
+  safe_not_equal: w,
+  toggle_class: r
 } = window.__gradio__svelte__internal;
 function y(n) {
-  let e, l;
+  let e, t;
   return {
     c() {
-      e = o("div"), l = o("iframe"), s(l, "title", "iframe component"), s(l, "width", "100%"), s(l, "height", "1000px"), s(
-        l,
+      e = u("div"), t = u("iframe"), this.h();
+    },
+    l(l) {
+      e = f(l, "DIV", { class: !0 });
+      var a = d(e);
+      t = f(a, "IFRAME", {
+        title: !0,
+        width: !0,
+        height: !0,
+        srcdoc: !0,
+        sandbox: !0,
+        allow: !0
+      }), d(t).forEach(c), a.forEach(c), this.h();
+    },
+    h() {
+      i(t, "title", "iframe component"), i(t, "width", "100%"), i(t, "height", "1000px"), i(
+        t,
         "srcdoc",
         /*value*/
         n[0]
-      ), s(l, "allow", ""), s(e, "class", "prose svelte-180qqaf"), c(
+      ), i(t, "sandbox", "allow-scripts"), i(t, "allow", ""), i(e, "class", "prose svelte-180qqaf"), r(
         e,
         "table",
         /*type*/
         n[1] === "table"
-      ), c(
+      ), r(
         e,
         "gallery",
         /*type*/
         n[1] === "gallery"
-      ), c(
+      ), r(
         e,
         "selected",
         /*selected*/
         n[2]
       );
     },
-    m(t, a) {
-      m(t, e, a), d(e, l);
+    m(l, a) {
+      v(l, e, a), m(e, t);
     },
-    p(t, [a]) {
+    p(l, [a]) {
       a & /*value*/
-      1 && s(
-        l,
+      1 && i(
+        t,
         "srcdoc",
         /*value*/
-        t[0]
+        l[0]
       ), a & /*type*/
-      2 && c(
+      2 && r(
         e,
         "table",
         /*type*/
-        t[1] === "table"
+        l[1] === "table"
       ), a & /*type*/
-      2 && c(
+      2 && r(
         e,
         "gallery",
         /*type*/
-        t[1] === "gallery"
+        l[1] === "gallery"
       ), a & /*selected*/
-      4 && c(
+      4 && r(
         e,
         "selected",
         /*selected*/
-        t[2]
+        l[2]
       );
     },
-    i: _,
-    o: _,
-    d(t) {
-      t && u(e);
+    i: h,
+    o: h,
+    d(l) {
+      l && c(e);
     }
   };
 }
-function h(n, e, l) {
-  let { value: t } = e, { type: a } = e, { selected: f = !1 } = e;
-  return n.$$set = (i) => {
-    "value" in i && l(0, t = i.value), "type" in i && l(1, a = i.type), "selected" in i && l(2, f = i.selected);
-  }, [t, a, f];
+function b(n, e, t) {
+  let { value: l } = e, { type: a } = e, { selected: o = !1 } = e;
+  return n.$$set = (s) => {
+    "value" in s && t(0, l = s.value), "type" in s && t(1, a = s.type), "selected" in s && t(2, o = s.selected);
+  }, [l, a, o];
 }
-class b extends r {
+class E extends _ {
   constructor(e) {
-    super(), g(this, e, h, y, v, { value: 0, type: 1, selected: 2 });
+    super(), g(this, e, b, y, w, { value: 0, type: 1, selected: 2 });
   }
 }
 export {
-  b as default
+  E as default
 };

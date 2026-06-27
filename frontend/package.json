@@ -8,9 +8,9 @@
   "private": false,
   "main_changeset": true,
   "dependencies": {
-    "@gradio/atoms": "^0.18.0",
-    "@gradio/statustracker": "^0.11.0",
-    "@gradio/utils": "^0.10.2"
+    "@gradio/atoms": "0.18.1",
+    "@gradio/statustracker": "0.11.1",
+    "@gradio/utils": "0.10.2"
   },
   "exports": {
     ".": { "gradio": "./Index.svelte" },
@@ -18,6 +18,9 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@gradio/preview": "^0.16.2"
+    "@gradio/preview": "0.14.0"
+  },
+  "peerDependencies": {
+    "svelte": "^4.0.0"
   }
 }
