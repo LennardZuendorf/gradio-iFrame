@@ -42,7 +42,7 @@ class iFrame(Component):
         preserved_by_key: list[str] | str | None = "value",
         height: str | None = None,
         width: str | None = None,
-        sandbox: str | None = None,
+        sandbox: str | None = "allow-scripts",
     ):
         """
         Parameters:
@@ -59,7 +59,7 @@ class iFrame(Component):
             preserved_by_key: A list of parameters from this component's constructor. Inside a gr.render() function, if a component is re-rendered with the same key, these (and only these) parameters will be preserved in the UI instead of re-rendered based on the values provided during constructor.
             height: The height of the iFrame in valid CSS (e.g. "100px" or "50%"). If None, the height will be automatically set based on content.
             width: The width of the iFrame in valid CSS (e.g. "100%" or "500px"). Defaults to 100%.
-            sandbox: HTML sandbox attribute string to restrict iframe capabilities (e.g. "allow-scripts allow-forms"). None (default) applies no sandboxing. Note: omitting "allow-scripts" disables JavaScript and auto-height measurement inside the iframe.
+            sandbox: HTML sandbox attribute string to restrict iframe capabilities (e.g. "allow-scripts allow-forms"). Defaults to "allow-scripts", which allows scripts while isolating iframe content from the Gradio app's origin. Pass None only for fully trusted content to remove sandboxing. Omitting "allow-scripts" disables JavaScript and auto-height measurement inside the iframe.
         """
         super().__init__(
             label=label,

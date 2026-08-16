@@ -11,11 +11,11 @@ license: mit
 
 # gradio_iframe
 
-A custom Gradio component that renders HTML in an iframe. It can embed content such as a YouTube or Spotify iframe, and supports explicit CSS dimensions or automatic height measurement for same-origin content.
+A Gradio custom component that renders HTML in an iframe. It supports nested embeds such as YouTube or Spotify players, explicit CSS dimensions, and automatic height updates for content that can run the injected measurement script.
 
 ## Development and testing
 
-Gradio's custom-component workflow requires Python 3.10+, Node.js 20+, npm 9+, and Gradio 5+. Use a virtual environment so the package and the `gradio` CLI always use the same Python installation.
+Gradio's custom-component workflow requires Python 3.10+, Node.js 20+, npm 9+, and Gradio 5.x. Use a virtual environment so the package and the `gradio` CLI always use the same Python installation.
 
 ```bash
 # From the repository root
@@ -50,11 +50,7 @@ Open the frontend URL shown by the CLI. To run the packaged demo rather than hot
 
 ## Usage
 
-The usage is similar to the HTML component. You can pass valid html and it will be rendered in the interface as an iframe, meaning you can embed any website or webapp that supports iframes.
-Also, JavaScript should run normal. You can even pass an iframe inside an iframe (see below!), i.e. a youtube or spotify embed.
-
-The size will adjust to the size of the iframe (onload), **this is gonna be a bit delayed**. The width is default at 100%. 
-You can also set the height and width manually. 
+Pass HTML to `value`. It is rendered as the iframe's `srcdoc`, so nested embeds work when their provider permits framing. Width defaults to `100%`; set `height` and `width` to any valid CSS values when automatic sizing is not appropriate.
 
 ### Example
 
@@ -62,36 +58,33 @@ You can also set the height and width manually.
 import gradio as gr
 from gradio_iframe import iFrame
 
-gr.Interface(
+with gr.Blocks() as demo:
     iFrame(
-        label="iFrame Example",
-        value=("""
-        <iframe width="560" 
-            height="315" 
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=QfHLpHZsI98oZT1G" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        label="iFrame example",
+        value="""
+        <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
-        </iframe>"""),
-        show_label=True)
-)
+        </iframe>
+        """,
+        height="315px",
+    )
+
+demo.launch()
 ```
 
-## Roadmap
+### Sandbox behavior
 
-- [ ] Add manual hand over of other iFrame options.
-- [ ] Explore switch between src and srcdoc through variable.
+`iFrame` defaults to `sandbox="allow-scripts"`. This lets scripts in the iframe run while keeping `srcdoc` content isolated from the Gradio app's origin. Add only the capabilities your embedded content needs, for example `sandbox="allow-scripts allow-forms"`.
 
-## Known Issues
+Passing `sandbox=None` removes the sandbox entirely and is appropriate only for HTML you fully trust. Untrusted HTML remains an injection risk; do not remove the default sandbox for untrusted content.
 
-**There are many reason why it's not a good idea to embed websites in an iframe.**
-See [this](https://blog.bitsrc.io/4-security-concerns-with-iframes-every-web-developer-should-know-24c73e6a33e4), or just google "iframe security concerns" for more information. Also, iFrames will use additional computing power and memory, which can slow down the interface.
+## Notes
 
-The component has automated frontend, packaging, and demo smoke tests, but applications that render untrusted HTML still require a deliberate security review.
-
-### Other Issues
-
-- Height sometimes does not grow according to the inner component.
-- The component is not completely responsive yet and struggles with variable heigth.
-- ...
+- Auto-height uses `postMessage` and requires scripts to be enabled in the sandbox. Cross-origin embedded pages may not expose a measurable document height.
+- Embedding can be blocked by the provider's framing policy.
+- The component has automated frontend, packaging, and demo smoke tests. Review any application that accepts untrusted HTML before deploying it.

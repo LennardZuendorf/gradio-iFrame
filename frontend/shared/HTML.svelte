@@ -7,7 +7,7 @@
 	export let min_height = false;
 	export let height = "100%";
 	export let width = "100%";
-	export let sandbox: string | null = null;
+	export let sandbox: string | null = "allow-scripts";
 
 	const dispatch = createEventDispatcher<{ change: undefined }>();
 

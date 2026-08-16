@@ -57,7 +57,7 @@ python -m gradio cc build . --no-bump-version --no-generate-docs \
 
 ### Testing
 
-Gradio custom components require Python 3.10+, Node.js 20+, npm 9+, and Gradio 5+. Run the full pre-PR verification from the repository root after the setup above:
+Gradio custom components require Python 3.10+, Node.js 20+, npm 9+, and Gradio 5.x. Run the full pre-PR verification from the repository root after the setup above:
 
 ```bash
 npm test --prefix frontend
@@ -99,7 +99,6 @@ When making changes that span both frontend and backend:
 **Versioning**: Python package version in `pyproject.toml`, JS version in `frontend/package.json` — bump both together on releases.
 
 ## Known Issues / Open Work
-- Auto-height only works for same-origin iframes (cross-origin throws and falls back silently)
+- Auto-height relies on the injected script and `postMessage`; embedded cross-origin pages may not expose a measurable document height
 - `show_label` parameter has no effect (noted in docstring)
-- No sandbox attribute on iframe (security: arbitrary HTML executes JS)
-- `width` param missing from docstring in `iframe.py`
+- Iframes default to `sandbox="allow-scripts"`; `sandbox=None` is an explicit opt-out only for fully trusted HTML

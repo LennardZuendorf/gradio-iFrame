@@ -8,7 +8,7 @@ _docs = {'iFrame': {'description': 'Used to display abitrary html output.\n', 'm
 abs_path = os.path.join(os.path.dirname(__file__), "css.css")
 
 with gr.Blocks(
-    css=abs_path,
+    css_paths=[abs_path],
     theme=gr.themes.Default(
         font_mono=[
             gr.themes.GoogleFont("Inconsolata"),
