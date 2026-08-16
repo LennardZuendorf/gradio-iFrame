@@ -10,8 +10,43 @@ license: mit
 ---
 
 # gradio_iframe
-A custom gradio component to embed an iframe in a gradio interface. This component is based on the [HTML]() component.
-It's currently still a work in progress.
+
+A custom Gradio component that renders HTML in an iframe. It can embed content such as a YouTube or Spotify iframe, and supports explicit CSS dimensions or automatic height measurement for same-origin content.
+
+## Development and testing
+
+Gradio's custom-component workflow requires Python 3.10+, Node.js 20+, npm 9+, and Gradio 5+. Use a virtual environment so the package and the `gradio` CLI always use the same Python installation.
+
+```bash
+# From the repository root
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
+npm ci --prefix frontend
+```
+
+Run the automated checks:
+
+```bash
+npm test --prefix frontend
+python -m gradio cc build . --no-bump-version --no-generate-docs \
+  --python-path "$(python -c 'import sys; print(sys.executable)')"
+python -m pip install --force-reinstall --no-deps dist/*.whl
+python -m twine check dist/*
+python -m pip check
+python -m pytest tests/ -v
+```
+
+The build regenerates the tracked templates under `backend/gradio_iframe/templates/`; edit the Svelte files in `frontend/` instead. The `dist/` directory is disposable build output.
+
+For frontend development with hot reload, keep the environment activated and run:
+
+```bash
+python -m gradio cc dev . --python-path "$(python -c 'import sys; print(sys.executable)')"
+```
+
+Open the frontend URL shown by the CLI. To run the packaged demo rather than hot reload, use `python app.py` or `python demo/app.py` after installation. These commands follow Gradio's [custom component workflow](https://www.gradio.app/guides/custom-components-in-five-minutes).
 
 ## Usage
 
@@ -53,7 +88,7 @@ gr.Interface(
 **There are many reason why it's not a good idea to embed websites in an iframe.**
 See [this](https://blog.bitsrc.io/4-security-concerns-with-iframes-every-web-developer-should-know-24c73e6a33e4), or just google "iframe security concerns" for more information. Also, iFrames will use additional computing power and memory, which can slow down the interface.
 
-Also, this component is still a work in progress and not fully tested. Use at your own risk.
+The component has automated frontend, packaging, and demo smoke tests, but applications that render untrusted HTML still require a deliberate security review.
 
 ### Other Issues
 

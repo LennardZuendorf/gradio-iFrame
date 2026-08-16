@@ -28,10 +28,15 @@ Custom Gradio component that renders HTML content inside an iframe. Published to
 
 ### Running the Demo
 ```bash
-# Install package locally (from repo root)
-pip install -e .
+# From the repository root, use a virtual environment so `gradio` and the
+# editable component are installed in the same Python environment.
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
+npm ci --prefix frontend
 
-# Launch demo
+# Launch a packaged demo
 python app.py
 # or
 python demo/app.py
@@ -39,16 +44,32 @@ python demo/app.py
 
 ### Frontend Dev
 ```bash
-cd frontend
-npm install
-# Gradio custom component live reload via:
-gradio cc dev
+# The virtual environment above must still be active.
+python -m gradio cc dev . --python-path "$(python -c 'import sys; print(sys.executable)')"
 ```
 
 ### Building
 ```bash
-gradio cc build
+# Keep package and CLI in the same active virtual environment.
+python -m gradio cc build . --no-bump-version --no-generate-docs \
+  --python-path "$(python -c 'import sys; print(sys.executable)')"
 ```
+
+### Testing
+
+Gradio custom components require Python 3.10+, Node.js 20+, npm 9+, and Gradio 5+. Run the full pre-PR verification from the repository root after the setup above:
+
+```bash
+npm test --prefix frontend
+python -m gradio cc build . --no-bump-version --no-generate-docs \
+  --python-path "$(python -c 'import sys; print(sys.executable)')"
+python -m pip install --force-reinstall --no-deps dist/*.whl
+python -m twine check dist/*
+python -m pip check
+python -m pytest tests/ -v
+```
+
+`gradio cc build` regenerates `backend/gradio_iframe/templates/`. Do not edit those generated files; make frontend changes in `frontend/` and rebuild. These commands mirror Gradio's [custom-component workflow](https://www.gradio.app/guides/custom-components-in-five-minutes).
 
 ## Agent Workflow Guidelines
 
