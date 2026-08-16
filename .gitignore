@@ -1,1 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.py[cod]
+*$py.class
+*.pyi
+.eggs/
+*.egg-info/
+dist/
+build/
+__tmp/
+
+# Virtual environment
+.venv/
+
+# Frontend
+frontend/node_modules/
+
+# IDE
+.idea/
+
+# Local scripts
 start-venv.sh

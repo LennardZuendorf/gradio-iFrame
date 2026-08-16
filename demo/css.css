@@ -26,7 +26,7 @@ html {
 
 .prose p {
 	margin: var(--vspace) 0;
-	line-height: var(--vspace * 2);
+	line-height: calc(var(--vspace) * 2);
 	font-size: 1rem;
 }
 

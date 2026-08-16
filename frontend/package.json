@@ -1,0 +1,32 @@
+{
+  "name": "gradio_iframe",
+  "version": "0.0.12",
+  "description": "Gradio UI packages",
+  "type": "module",
+  "author": "Lennard Zündorf",
+  "license": "MIT",
+  "private": false,
+  "main_changeset": true,
+  "dependencies": {
+    "@gradio/atoms": "0.18.1",
+    "@gradio/statustracker": "0.11.1",
+    "@gradio/utils": "0.10.2"
+  },
+  "exports": {
+    ".": { "gradio": "./Index.svelte" },
+    "./example": { "gradio": "./Example.svelte" },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings \"unused-export-let:ignore\"",
+    "test": "npm run check"
+  },
+  "devDependencies": {
+    "@gradio/preview": "0.14.0",
+    "svelte-check": "4.3.4",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "svelte": "^4.0.0"
+  }
+}

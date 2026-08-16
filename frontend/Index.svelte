@@ -12,7 +12,7 @@
 	export let value = "";
 	export let height: string = "100%";
 	export let width: string = "100%";
-	export let sandbox: string | null = null;
+	export let sandbox: string | null = "allow-scripts";
 	export let loading_status: LoadingStatus;
 	export let gradio: Gradio<{
 		change: never;
